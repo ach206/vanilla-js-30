@@ -18,9 +18,14 @@
     <input id="base" type="color" name="base" value="#ffc600">
   </div>
 
-  <img src="http://i.imgur.com/b9r5sEL.jpg" width="50%" crossorigin="text/html" referrerpolicy="no-referrer">
+  <img src="http://i.imgur.com/b9r5sEL.jpg" width="50%" referrerpolicy="no-referrer">
 
   <style>
+    :root {
+      --spacing: 3px;
+      --blur: 12px;
+      --base: #193549;
+    }
 
     /*
       misc styles, nothing to do with CSS variables
@@ -45,6 +50,16 @@
   </style>
 
   <script>
+    let input = document.querySelectorAll('.controls input');
+    function updateControls(e){
+      if (!input) return;
+      input.forEach(i => {
+        console.log(i.value);
+      });
+
+    }
+
+    window.addEventListener('change', updateControls);
   </script>
 
 </body>
