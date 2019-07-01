@@ -24,9 +24,18 @@
     :root {
       --spacing: 3px;
       --blur: 12px;
-      --base: #193549;
+      --base: #ffffff;
     }
 
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+
+    .hl {
+      color: var(--base);
+    }
     /*
       misc styles, nothing to do with CSS variables
     */
@@ -51,15 +60,17 @@
 
   <script>
     let input = document.querySelectorAll('.controls input');
+   
     function updateControls(e){
       if (!input) return;
-      input.forEach(i => {
-        console.log(i.value);
-      });
-
+      let unitType = this.dataset.sizing || "";
+      
+      //updates <html> element with values from css variable
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + unitType); 
+      
     }
 
-    window.addEventListener('change', updateControls);
+    input.forEach(i => i.addEventListener('change', updateControls));
   </script>
 
 </body>
