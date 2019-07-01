@@ -66,7 +66,8 @@
   };
 
   function animateBtn(e){
-
+    let key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    key.classList.add('playing');
   };
 
   function resetBtn(e){
