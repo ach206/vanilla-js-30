@@ -60,6 +60,7 @@
 <script>
   function playSound(e) {
     let sound = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    if (!sound) return; // if querySelector finds none then return
     sound.currentTime = 0; //resets the audio to the beginning
     sound.play();
     animateBtn(e);
@@ -71,6 +72,7 @@
   };
 
   function resetBtn(e){
+    if (e.propertyName !== 'transform') return; //do nothing if event is not  a transform type
     this.classList.remove('playing');
   };
 
